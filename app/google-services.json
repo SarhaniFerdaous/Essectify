@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "990734685365",
+    "project_id": "essectify",
+    "storage_bucket": "essectify.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:990734685365:android:dd3e2f6b3e1ada81321afc",
+        "android_client_info": {
+          "package_name": "com.example.absencesessect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtxmXuve-uJnX3iPh42_SUROSpcfZMi6s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
