@@ -1,4 +1,5 @@
 [versions]
+firebase-messaging = "24.4.0"
 agp = "8.7.3"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -12,6 +13,7 @@ kotlin = "1.9.10"
 googleGmsGoogleServices = "4.4.2"
 firebaseAuth = "23.1.0"
 
+
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -22,6 +24,7 @@ activity = { group = "androidx.activity", name = "activity", version.ref = "acti
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 android_gradle_plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
+itextpdf = "com.itextpdf:itextpdf:5.5.13.3"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

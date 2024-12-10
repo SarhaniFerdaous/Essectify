@@ -2,6 +2,7 @@ package com.example.absencesessect.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -11,11 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.absencesessect.R;
 import com.example.absencesessect.absence.AddAbsenceActivity;
-import com.example.absencesessect.utils.FirestoreHelper;
+import com.example.absencesessect.models.TeacherAbsence;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.example.absencesessect.models.TeacherAbsence;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +26,8 @@ public class DashboardActivity extends AppCompatActivity {
     private List<TeacherAbsence> teacherAbsenceList;
     private FirebaseFirestore db;
     private Button addAbsenceButton;
+    private Button viewStatsButton;
+    private Button viewNotificationsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,8 @@ public class DashboardActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         addAbsenceButton = findViewById(R.id.addAbsenceButton);
+        viewStatsButton = findViewById(R.id.viewStatsButton);
+        viewNotificationsButton = findViewById(R.id.viewNotificationsButton);
 
         teacherAbsenceList = new ArrayList<>();
         adapter = new TeacherAbsenceAdapter(teacherAbsenceList);
@@ -43,10 +46,14 @@ public class DashboardActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
-        // Load data from Firestore
+
         loadTeacherAbsences();
 
-        // Navigate to Add Absence screen
+        String userRole = getUserRoleFromFirestore();
+
+        adjustButtonVisibility(userRole);
+
+
         addAbsenceButton.setOnClickListener(v -> {
             Intent intent = new Intent(DashboardActivity.this, AddAbsenceActivity.class);
             startActivity(intent);
@@ -68,5 +75,25 @@ public class DashboardActivity extends AppCompatActivity {
                         Toast.makeText(DashboardActivity.this, "Failed to load data", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+
+    private void adjustButtonVisibility(String userRole) {
+        if (userRole.equals("admin") || userRole.equals("agent")) {
+
+            addAbsenceButton.setVisibility(View.VISIBLE);
+            viewStatsButton.setVisibility(View.VISIBLE);
+        } else {
+
+            addAbsenceButton.setVisibility(View.GONE);
+            viewStatsButton.setVisibility(View.GONE);
+        }
+
+
+        viewNotificationsButton.setVisibility(View.VISIBLE);
+    }
+
+    private String getUserRoleFromFirestore() {
+                return "admin";
     }
 }

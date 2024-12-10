@@ -1,6 +1,7 @@
 package com.example.absencesessect.timetable;
 
 import android.util.Log;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -19,12 +20,20 @@ public class ExcelReader {
 
     public static void readExcel(String filePath, ExcelCallback callback) {
         List<String> data = new ArrayList<>();
+        FileInputStream fis = null;
         try {
             File file = new File(filePath);
-            FileInputStream fis = new FileInputStream(file);
+            fis = new FileInputStream(file);
 
-            // Read Excel file (HSSF for .xls files)
-            Workbook workbook = new HSSFWorkbook(fis);
+            Workbook workbook;
+
+
+            if (filePath.endsWith(".xlsx")) {
+                workbook = new XSSFWorkbook(fis);
+            } else {
+                workbook = new HSSFWorkbook(fis);
+            }
+
             Sheet sheet = workbook.getSheetAt(0);
 
             for (Row row : sheet) {
@@ -35,8 +44,17 @@ public class ExcelReader {
 
             fis.close();
             callback.onExcelRead(data);
+
         } catch (IOException e) {
             Log.e("ExcelReader", "Error reading Excel file", e);
+        } finally {
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    Log.e("ExcelReader", "Error closing file input stream", e);
+                }
+            }
         }
     }
 }

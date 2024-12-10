@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.absencesessect"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -34,14 +34,21 @@ android {
 }
 
 dependencies {
-    implementation(libs.appcompat)                  // From libs.versions.toml
-    implementation(libs.material)                  // From libs.versions.toml
-    implementation(libs.activity)                  // From libs.versions.toml
+    implementation(libs.appcompat)
+    implementation(libs.material)
+    implementation(libs.activity)
     implementation(libs.constraintlayout)
-    implementation(libs.firebase.auth)          // From libs.versions.toml
+    implementation(libs.firebase.auth)
 
-    testImplementation(libs.junit)                 // From libs.versions.toml
-    androidTestImplementation(libs.ext.junit)      // From libs.versions.toml
-    androidTestImplementation(libs.espresso.core)  // From libs.versions.toml
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.ext.junit)
+    androidTestImplementation(libs.espresso.core)
+    //implementation (libs.firebase.messaging)
+    implementation (libs.itextpdf)
+    implementation ("com.google.firebase:firebase-firestore:25.1.1")
+    implementation ("com.google.firebase:firebase-messaging:24.1.0")
+    implementation ("org.apache.poi:poi:5.2.3")
+    implementation ("org.apache.poi:poi-ooxml:5.2.3")
+
 
 }

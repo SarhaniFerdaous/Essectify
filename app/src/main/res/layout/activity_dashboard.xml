@@ -41,6 +41,36 @@
         android:textSize="16sp"
         android:padding="10dp"
         android:layout_marginBottom="20dp"
+        android:fontFamily="sans-serif-medium"
+        android:visibility="gone" /> <!-- Initially hidden -->
+
+    <!-- Button for generating reports or viewing stats (For Admin/Agent) -->
+    <Button
+        android:id="@+id/viewStatsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Stats"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_background"
+        android:layout_gravity="center"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="sans-serif-medium"
+        android:visibility="gone" /> <!-- Initially hidden -->
+
+    <!-- Button for notifications (For Admin/Agent/Teacher) -->
+    <Button
+        android:id="@+id/viewNotificationsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Notifications"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_background"
+        android:layout_gravity="center"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="sans-serif-medium" />
 
 </LinearLayout>

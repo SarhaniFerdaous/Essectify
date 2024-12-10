@@ -1,33 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="12dp"
-    android:background="@drawable/item_background"
-    android:gravity="center_vertical"
-    android:layout_marginBottom="10dp">
+    android:orientation="vertical"
+    android:padding="8dp">
 
-    <!-- Teacher Name -->
     <TextView
         android:id="@+id/teacherName"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:text="Teacher Name"
-        android:textSize="18sp"
-        android:textColor="#333333"
-        android:fontFamily="sans-serif"
         android:textStyle="bold" />
 
-    <!-- Absence Count -->
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date" />
+
+    <TextView
+        android:id="@+id/reason"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reason" />
+
     <TextView
         android:id="@+id/absenceCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Absences: 0"
-        android:textSize="16sp"
-        android:textColor="#4CAF50"
-        android:fontFamily="sans-serif" />
-
+        android:text="Absences: 0"/>
 </LinearLayout>

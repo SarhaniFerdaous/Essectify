@@ -16,7 +16,7 @@ public class PDFReader {
         try {
             PdfReader reader = new PdfReader(filePath);
 
-            // Extract text from each page
+
             int pageCount = reader.getNumberOfPages();
             for (int i = 1; i <= pageCount; i++) {
                 pdfContent.append(PdfTextExtractor.getTextFromPage(reader, i)).append("\n");
