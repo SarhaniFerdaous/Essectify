@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:title="Teacher Panel"
+        android:background="?android:attr/windowBackground"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+
+    <ProgressBar
+        android:id="@+id/loadingProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:id="@+id/loadingAbsencesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loading absences..."
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:textSize="16sp"
+        android:textColor="@android:color/black" />
+
+    <!-- Absences RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewOwnAbsences"
+        android:layout_width="match_parent"
+        android:layout_height="403dp"
+        android:layout_weight="1"
+        android:padding="8dp" />
+
+    <!-- Reclamation Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <EditText
+            android:id="@+id/reclamationParagraph"
+            android:layout_width="match_parent"
+            android:layout_height="139dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Write your reclamation here"
+            android:padding="8dp" />
+
+        <Button
+            android:id="@+id/submitReclamationButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit Reclamation"
+            android:layout_gravity="end"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/pink" />
+    </LinearLayout>
+</LinearLayout>

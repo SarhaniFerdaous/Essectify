@@ -49,6 +49,8 @@ dependencies {
     implementation ("com.google.firebase:firebase-messaging:24.1.0")
     implementation ("org.apache.poi:poi:5.2.3")
     implementation ("org.apache.poi:poi-ooxml:5.2.3")
+    implementation ("androidx.recyclerview:recyclerview:1.3.2")
+
 
 
 }

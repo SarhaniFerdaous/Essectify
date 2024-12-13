@@ -1,28 +1,52 @@
 package com.example.absencesessect.models;
 
 public class TeacherAbsence {
+    private String id;  // Firestore document ID
     private String teacherName;
+    private String teacherEmail;
     private String date;
-    private String reason;
     private String time;
-    private int absenceCount;
+    private String room;
+    private String className;
 
-
-    public TeacherAbsence() {}
-
-    public TeacherAbsence(String teacherName, String date, String reason, String time) {
-        this.teacherName = teacherName;
-        this.date = date;
-        this.reason = reason;
-        this.time = time;
+    // Default constructor for Firestore
+    public TeacherAbsence() {
     }
 
+    // Constructor
+    public TeacherAbsence(String teacherName, String teacherEmail, String date, String time, String room, String className) {
+        this.teacherName = teacherName;
+        this.teacherEmail = teacherEmail;
+        this.date = date;
+        this.time = time;
+        this.room = room;
+        this.className = className;
+    }
+
+    // Getter and Setter for id (Firestore document ID)
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    // Getters and Setters for other fields
     public String getTeacherName() {
         return teacherName;
     }
 
     public void setTeacherName(String teacherName) {
         this.teacherName = teacherName;
+    }
+
+    public String getTeacherEmail() {
+        return teacherEmail;
+    }
+
+    public void setTeacherEmail(String teacherEmail) {
+        this.teacherEmail = teacherEmail;
     }
 
     public String getDate() {
@@ -33,14 +57,6 @@ public class TeacherAbsence {
         this.date = date;
     }
 
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
-
     public String getTime() {
         return time;
     }
@@ -49,11 +65,19 @@ public class TeacherAbsence {
         this.time = time;
     }
 
-    public int getAbsenceCount() {
-        return absenceCount;
+    public String getRoom() {
+        return room;
     }
 
-    public void setAbsenceCount(int absenceCount) {
-        this.absenceCount = absenceCount;
+    public void setRoom(String room) {
+        this.room = room;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
     }
 }

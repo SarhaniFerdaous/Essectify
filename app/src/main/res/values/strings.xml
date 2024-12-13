@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Absences Essect</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="room">Room</string>
+    <string name="teacher_email">Teacher Email</string>
+    <string name="teacher_name">Teacher Name</string>
+    <string name="delete">Delete</string>
 </resources>

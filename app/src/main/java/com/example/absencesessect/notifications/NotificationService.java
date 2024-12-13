@@ -18,7 +18,7 @@ public class NotificationService {
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setAutoCancel(true);
 
-        Intent intent = new Intent(context, com.example.absencesessect.MainActivity.class);
+        Intent intent = new Intent(context, com.example.absencesessect.auth.LoginActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(pendingIntent);
 

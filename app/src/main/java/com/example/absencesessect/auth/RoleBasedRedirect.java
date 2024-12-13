@@ -2,27 +2,35 @@ package com.example.absencesessect.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.absencesessect.dashboard.DashboardActivity;
+import com.example.absencesessect.admin.AdminPanelActivity;
+import com.example.absencesessect.teacher.TeacherPanelActivity;
+import com.example.absencesessect.agent.AgentPanelActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.example.absencesessect.R;
+
 
 public class RoleBasedRedirect extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
+    private ProgressBar loadingIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_role_based_redirect);
 
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+        loadingIndicator = findViewById(R.id.loading_indicator); // Loading progress bar
 
         if (mAuth.getCurrentUser() == null) {
             // Redirect to login if no user is logged in
@@ -33,8 +41,14 @@ public class RoleBasedRedirect extends AppCompatActivity {
 
         String userId = mAuth.getCurrentUser().getUid();
 
+        // Show loading indicator
+        loadingIndicator.setVisibility(View.VISIBLE);
+
         db.collection("users").document(userId).get()
                 .addOnCompleteListener(task -> {
+                    // Hide loading indicator when the task completes
+                    loadingIndicator.setVisibility(View.GONE);
+
                     if (task.isSuccessful() && task.getResult() != null) {
                         DocumentSnapshot document = task.getResult();
                         String role = document.getString("role");
@@ -47,16 +61,16 @@ public class RoleBasedRedirect extends AppCompatActivity {
                             return;
                         }
 
-                        // Redirect based on role
+                        // Redirect based on the user's role
                         switch (role) {
                             case "admin":
-                                startActivity(new Intent(RoleBasedRedirect.this, DashboardActivity.class));
+                                startActivity(new Intent(RoleBasedRedirect.this, AdminPanelActivity.class));
                                 break;
                             case "agent":
-                                startActivity(new Intent(RoleBasedRedirect.this, DashboardActivity.class));
+                                startActivity(new Intent(RoleBasedRedirect.this, AgentPanelActivity.class));
                                 break;
                             case "teacher":
-                                startActivity(new Intent(RoleBasedRedirect.this, DashboardActivity.class));
+                                startActivity(new Intent(RoleBasedRedirect.this, TeacherPanelActivity.class));
                                 break;
                             default:
                                 Toast.makeText(this, "Unknown role. Contact admin.", Toast.LENGTH_SHORT).show();
