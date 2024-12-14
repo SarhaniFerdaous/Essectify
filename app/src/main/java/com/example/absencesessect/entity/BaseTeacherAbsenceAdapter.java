@@ -1,4 +1,4 @@
-package com.example.absencesessect.models;
+package com.example.absencesessect.entity;
 
 import android.content.Context;
 import android.view.View;
@@ -7,6 +7,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.absencesessect.R;
+import com.example.absencesessect.models.TeacherAbsence;
 
 import java.util.List;
 

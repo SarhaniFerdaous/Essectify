@@ -1,4 +1,4 @@
-package com.example.absencesessect.notifications;
+package com.example.absencesessect.utils;
 
 import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessaging;

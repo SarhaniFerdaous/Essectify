@@ -1,104 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="?android:attr/selectableItemBackground"
-    android:layout_marginBottom="8dp">
+    android:padding="16dp">
 
-    <!-- User Name -->
-    <TextView
-        android:id="@+id/userName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="User Name"
-        android:textSize="16sp"
-        android:textStyle="bold" />
 
-    <!-- User Email -->
-    <TextView
-        android:id="@+id/userEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email"
-        android:textSize="14sp"
-        android:layout_marginTop="4dp" />
-
-    <!-- Delete User Button -->
-    <Button
-        android:id="@+id/deleteUserButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete User"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:layout_marginTop="8dp" />
-
-    <!-- Show Roles Button -->
-    <Button
-        android:id="@+id/showRolesButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Assign Role"
-        android:layout_marginTop="8dp" />
-
-    <!-- Roles Scroll View -->
-    <ScrollView
-        android:id="@+id/rolesScrollView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewUsers"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_marginTop="8dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- Roles Placeholder -->
-            <TextView
-                android:id="@+id/roleAgent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Role: Agent"
-                android:textSize="14sp"
-                android:padding="8dp" />
-
-            <TextView
-                android:id="@+id/roleTeacher"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Role: Teacher"
-                android:textSize="14sp"
-                android:padding="8dp" />
-
-            <TextView
-                android:id="@+id/roleAdmin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Role: Admin"
-                android:textSize="14sp"
-                android:padding="8dp" />
-        </LinearLayout>
-    </ScrollView>
-
-    <!-- User Absences -->
-    <TextView
-        android:id="@+id/absenceHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Absences"
-        android:textStyle="bold"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_marginTop="16dp" />
 
-    <LinearLayout
-        android:id="@+id/absenceDetailsLayout"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewTeacherAbsences"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp"
+        android:visibility="gone" />
+
+
+    <Button
+        android:id="@+id/buttonTimetable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="8dp">
-        <!-- Absence Details will be added dynamically -->
-    </LinearLayout>
+        android:text="Manage Timetable"
+        android:textSize="16sp"
+        android:background="@drawable/button_background"
+        android:textColor="#FFFFFF"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp" />
 
 </LinearLayout>

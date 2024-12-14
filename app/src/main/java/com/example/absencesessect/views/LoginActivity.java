@@ -1,4 +1,4 @@
-package com.example.absencesessect.auth;
+package com.example.absencesessect.views;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,8 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        android:layout_centerInParent="true"
-        android:layout_alignParentTop="true" />
+        android:layout_gravity="center" />
 
     <TextView
         android:id="@+id/loadingAbsencesText"
@@ -28,8 +26,7 @@
         android:layout_height="wrap_content"
         android:text="Loading absences..."
         android:visibility="gone"
-        android:layout_centerInParent="true"
-        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
         android:textSize="16sp"
         android:textColor="@android:color/black" />
 
@@ -37,7 +34,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewOwnAbsences"
         android:layout_width="match_parent"
-        android:layout_height="403dp"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:padding="8dp" />
 
@@ -51,10 +48,12 @@
         <EditText
             android:id="@+id/reclamationParagraph"
             android:layout_width="match_parent"
-            android:layout_height="139dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/edit_text_background"
             android:hint="Write your reclamation here"
-            android:padding="8dp" />
+            android:padding="12dp"
+            android:minHeight="48dp"
+        android:importantForAccessibility="yes" />
 
         <Button
             android:id="@+id/submitReclamationButton"

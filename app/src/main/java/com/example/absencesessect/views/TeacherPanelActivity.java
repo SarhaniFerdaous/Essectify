@@ -1,6 +1,5 @@
-package com.example.absencesessect.teacher;
+package com.example.absencesessect.views;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -9,21 +8,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.absencesessect.R;
-import com.example.absencesessect.auth.LoginActivity;
 import com.example.absencesessect.models.TeacherAbsence;
-import com.example.absencesessect.models.TeacherAbsenceAdapter;
+import com.example.absencesessect.entity.TeacherAbsenceAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;

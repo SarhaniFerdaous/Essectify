@@ -44,6 +44,7 @@
             android:inputType="textEmailAddress"
             android:padding="12dp" />
 
+        <!-- Date Input (Editable TextField) -->
         <EditText
             android:id="@+id/editTextDate"
             android:layout_width="match_parent"
@@ -54,6 +55,7 @@
             android:clickable="true"
             android:padding="12dp" />
 
+        <!-- Time Input (Editable TextField) -->
         <EditText
             android:id="@+id/editTextTime"
             android:layout_width="match_parent"

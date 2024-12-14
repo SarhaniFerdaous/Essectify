@@ -1,12 +1,13 @@
-package com.example.absencesessect.notifications;
+package com.example.absencesessect.entity;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import androidx.core.app.NotificationCompat;
-import com.example.absencesessect.R;
+
 import com.example.absencesessect.utils.NotificationHelper;
+import com.example.absencesessect.views.LoginActivity;
 
 public class NotificationService {
 
@@ -18,7 +19,7 @@ public class NotificationService {
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setAutoCancel(true);
 
-        Intent intent = new Intent(context, com.example.absencesessect.auth.LoginActivity.class);
+        Intent intent = new Intent(context, LoginActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(pendingIntent);
 

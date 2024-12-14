@@ -9,11 +9,10 @@ public class TeacherAbsence {
     private String room;
     private String className;
 
-    // Default constructor for Firestore
+
     public TeacherAbsence() {
     }
 
-    // Constructor
     public TeacherAbsence(String teacherName, String teacherEmail, String date, String time, String room, String className) {
         this.teacherName = teacherName;
         this.teacherEmail = teacherEmail;
@@ -23,7 +22,6 @@ public class TeacherAbsence {
         this.className = className;
     }
 
-    // Getter and Setter for id (Firestore document ID)
     public String getId() {
         return id;
     }

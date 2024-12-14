@@ -7,7 +7,7 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Essectify"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AbsencesEssect"
@@ -16,7 +16,7 @@
 
         <!-- Login Activity -->
         <activity
-            android:name=".auth.LoginActivity"
+            android:name=".views.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,22 +26,22 @@
 
         <!-- Role-Based Redirect Activity -->
         <activity
-            android:name=".auth.RoleBasedRedirect"
+            android:name=".views.RoleBasedRedirect"
             android:exported="false" />
 
         <!-- Admin Panel Activity -->
         <activity
-            android:name=".admin.AdminPanelActivity"
+            android:name=".views.AdminPanelActivity"
             android:exported="false" />
 
         <!-- Agent Panel Activity -->
         <activity
-            android:name=".agent.AgentPanelActivity"
+            android:name=".views.AgentPanelActivity"
             android:exported="false" />
 
         <!-- Teacher Panel Activity -->
         <activity
-            android:name=".teacher.TeacherPanelActivity"
+            android:name=".views.TeacherPanelActivity"
             android:exported="false" />
 
     </application>

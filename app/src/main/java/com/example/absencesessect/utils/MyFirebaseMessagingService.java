@@ -1,10 +1,10 @@
-package com.example.absencesessect.notifications;
+package com.example.absencesessect.utils;
 
 import android.app.NotificationManager;
 import android.content.Context;
 import android.util.Log;
 import androidx.core.app.NotificationCompat;
-import com.example.absencesessect.R;
+
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 

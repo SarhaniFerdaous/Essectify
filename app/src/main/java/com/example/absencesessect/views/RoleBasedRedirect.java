@@ -1,4 +1,4 @@
-package com.example.absencesessect.auth;
+package com.example.absencesessect.views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,9 +8,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.absencesessect.admin.AdminPanelActivity;
-import com.example.absencesessect.teacher.TeacherPanelActivity;
-import com.example.absencesessect.agent.AgentPanelActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;

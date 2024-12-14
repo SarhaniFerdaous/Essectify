@@ -1,8 +1,10 @@
-package com.example.absencesessect.agent;
+package com.example.absencesessect.views;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -12,10 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.absencesessect.R;
 import com.example.absencesessect.models.TeacherAbsence;
-import com.example.absencesessect.models.TeacherAbsenceAdapter;
+import com.example.absencesessect.entity.AgentAdapter;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class AgentPanelActivity extends AppCompatActivity {
@@ -23,7 +26,7 @@ public class AgentPanelActivity extends AppCompatActivity {
     private EditText editTeacherName, editTeacherEmail, editTextDate, editTextTime, editTextRoom, editTextClass;
     private FirebaseFirestore db;
     private RecyclerView recyclerView;
-    private TeacherAbsenceAdapter adapter;
+    private AgentAdapter adapter;
     private List<TeacherAbsence> absenceList;
 
     @Override
@@ -45,12 +48,45 @@ public class AgentPanelActivity extends AppCompatActivity {
 
         // Set up RecyclerView
         absenceList = new ArrayList<>();
-        adapter = new TeacherAbsenceAdapter(this, absenceList);
+        adapter = new AgentAdapter(this, absenceList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
         // Handle Submit Button
         findViewById(R.id.buttonSubmit).setOnClickListener(v -> submitAbsence());
+
+        // Date Picker
+        editTextDate.setOnClickListener(v -> showDatePicker());
+
+        // Time Picker
+        editTextTime.setOnClickListener(v -> showTimePicker());
+    }
+
+    private void showDatePicker() {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, (view, year1, month1, dayOfMonth1) -> {
+            String date = year1 + "-" + (month1 + 1) + "-" + dayOfMonth1;
+            editTextDate.setText(date);
+        }, year, month, dayOfMonth);
+
+        datePickerDialog.show();
+    }
+
+    private void showTimePicker() {
+        Calendar calendar = Calendar.getInstance();
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, (view, hourOfDay, minute1) -> {
+            String time = hourOfDay + ":" + String.format("%02d", minute1);
+            editTextTime.setText(time);
+        }, hour, minute, true);
+
+        timePickerDialog.show();
     }
 
     private void submitAbsence() {

@@ -5,10 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_blue_pink"
-    tools:context=".auth.LoginActivity"
+    tools:context=".views.LoginActivity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="-38dp">
 
+
+    <ImageView
+        android:id="@+id/logo_image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/essectify"
+        app:layout_constraintBottom_toTopOf="@id/header_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="100dp" />
 
     <TextView
         android:id="@+id/header_title"
@@ -16,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="224dp"
         android:gravity="center"
-        android:text="Welcome Back!"
+        android:text="Welcome !"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
