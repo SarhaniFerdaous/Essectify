@@ -41,20 +41,19 @@ public class TeacherAbsenceAdapter extends RecyclerView.Adapter<TeacherAbsenceAd
         holder.timeTextView.setText("Time: " + absence.getTime());
         holder.dateTextView.setText("Date: " + absence.getDate());
 
-        // Button click listener to submit reclamation
+
         holder.submitButton.setOnClickListener(v -> {
             String reclamationText = holder.reclamationEditText.getText().toString().trim();
             if (!reclamationText.isEmpty()) {
-                long timestamp = System.currentTimeMillis(); // Use current timestamp for the reclamation
+                long timestamp = System.currentTimeMillis();
                 Reclamation reclamation = new Reclamation(absence.getId(), reclamationText, timestamp);
 
-                // Save reclamation to Firebase
+
                 firestore.collection("reclamations").add(reclamation)
                         .addOnSuccessListener(documentReference -> {
-                            // You can add any success message or action after submission
                         })
                         .addOnFailureListener(e -> {
-                            // Handle failure (e.g., show a toast or log an error)
+
                         });
             }
         });
@@ -65,7 +64,7 @@ public class TeacherAbsenceAdapter extends RecyclerView.Adapter<TeacherAbsenceAd
         return teacherAbsences.size();
     }
 
-    // ViewHolder class for binding views
+
     public static class TeacherAbsenceViewHolder extends RecyclerView.ViewHolder {
         TextView classTextView, roomTextView, timeTextView, dateTextView;
         EditText reclamationEditText;

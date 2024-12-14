@@ -22,12 +22,12 @@ public class TimetableActivity extends AppCompatActivity {
         uploadPDFButton = findViewById(R.id.uploadPDFButton);
 
         uploadExcelButton.setOnClickListener(v -> {
-            // Logic to open file chooser and load Excel file
+
             loadExcelFile("path/to/excel/file");
         });
 
         uploadPDFButton.setOnClickListener(v -> {
-            // Logic to open file chooser and load PDF file
+
             loadPDFFile("path/to/pdf/file");
         });
 
@@ -36,14 +36,14 @@ public class TimetableActivity extends AppCompatActivity {
 
     public void loadExcelFile(String filePath) {
         ExcelReader.readExcel(filePath, data -> {
-            // Handle the loaded data
+
             Toast.makeText(this, "Excel Data Loaded", Toast.LENGTH_SHORT).show();
         });
     }
 
     public void loadPDFFile(String filePath) {
         PDFReader.readPDF(filePath, data -> {
-            // Handle the loaded data
+
             Toast.makeText(this, "PDF Data Loaded", Toast.LENGTH_SHORT).show();
         });
     }

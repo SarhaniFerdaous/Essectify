@@ -38,14 +38,13 @@ public class AgentAdapter extends RecyclerView.Adapter<AgentAdapter.AbsenceViewH
     public void onBindViewHolder(AbsenceViewHolder holder, int position) {
         TeacherAbsence absence = absenceList.get(position);
 
-        // Set the text for each field
         holder.classNameTextView.setText("Class: " + absence.getClassName());
         holder.roomTextView.setText("Room: " + absence.getRoom());
         holder.timeTextView.setText("Time: " + absence.getTime());
         holder.dateTextView.setText("Date: " + absence.getDate());
         holder.teacherNameTextView.setText("Teacher: " + absence.getTeacherName());
 
-        // Set the delete button action
+
         holder.deleteButton.setOnClickListener(v -> deleteAbsence(absence, position));
     }
 
@@ -55,7 +54,7 @@ public class AgentAdapter extends RecyclerView.Adapter<AgentAdapter.AbsenceViewH
     }
 
     private void deleteAbsence(TeacherAbsence absence, int position) {
-        // Delete the absence from Firestore
+
         db.collection("absences")
                 .document(absence.getId())
                 .delete()

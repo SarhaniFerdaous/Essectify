@@ -1,14 +1,17 @@
 package com.example.absencesessect.views;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.widget.Button;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,10 +37,11 @@ public class AgentPanelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agent_panel);
 
-        // Initialize Firestore
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         db = FirebaseFirestore.getInstance();
 
-        // Initialize views
         editTeacherName = findViewById(R.id.editTeacherName);
         editTeacherEmail = findViewById(R.id.editTeacherEmail);
         editTextDate = findViewById(R.id.editTextDate);
@@ -46,20 +50,31 @@ public class AgentPanelActivity extends AppCompatActivity {
         editTextClass = findViewById(R.id.editTextClass);
         recyclerView = findViewById(R.id.recyclerViewAbsences);
 
-        // Set up RecyclerView
         absenceList = new ArrayList<>();
         adapter = new AgentAdapter(this, absenceList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        // Handle Submit Button
         findViewById(R.id.buttonSubmit).setOnClickListener(v -> submitAbsence());
 
-        // Date Picker
         editTextDate.setOnClickListener(v -> showDatePicker());
 
-        // Time Picker
         editTextTime.setOnClickListener(v -> showTimePicker());
+
+
+        fetchAbsences();
+    }
+
+    private void fetchAbsences() {
+        db.collection("absences")
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    List<TeacherAbsence> absences = queryDocumentSnapshots.toObjects(TeacherAbsence.class);
+                    absenceList.clear();
+                    absenceList.addAll(absences);
+                    adapter.notifyDataSetChanged();
+                })
+                .addOnFailureListener(e -> Toast.makeText(this, "Failed to load absences", Toast.LENGTH_SHORT).show());
     }
 
     private void showDatePicker() {
@@ -103,10 +118,8 @@ public class AgentPanelActivity extends AppCompatActivity {
             return;
         }
 
-        // Create absence object
         TeacherAbsence absence = new TeacherAbsence(name, email, date, time, room, className);
 
-        // Save to Firestore
         db.collection("absences")
                 .add(absence)
                 .addOnSuccessListener(documentReference -> {
@@ -115,7 +128,6 @@ public class AgentPanelActivity extends AppCompatActivity {
                     absenceList.add(absence);
                     adapter.notifyDataSetChanged();
 
-                    // Clear input fields
                     editTeacherName.setText("");
                     editTeacherEmail.setText("");
                     editTextDate.setText("");
@@ -127,5 +139,36 @@ public class AgentPanelActivity extends AppCompatActivity {
                     Toast.makeText(this, "Failed to add absence", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 });
+    }
+
+    public void deleteAbsence(final TeacherAbsence absence) {
+        new AlertDialog.Builder(this)
+                .setTitle("Confirm Deletion")
+                .setMessage("Are you sure you want to delete this absence?")
+                .setPositiveButton("Yes", (dialog, which) -> {
+                    db.collection("absences")
+                            .document(absence.getId())
+                            .delete()
+                            .addOnSuccessListener(aVoid -> {
+                                Toast.makeText(this, "Absence deleted", Toast.LENGTH_SHORT).show();
+                                absenceList.remove(absence);
+                                adapter.notifyDataSetChanged();
+                            })
+                            .addOnFailureListener(e -> Toast.makeText(this, "Failed to delete absence", Toast.LENGTH_SHORT).show());
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            Intent intent = new Intent(AgentPanelActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

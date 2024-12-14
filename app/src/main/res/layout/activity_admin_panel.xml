@@ -5,7 +5,16 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:title="Admin Panel"
+        android:background="?android:attr/windowBackground"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
+    <!-- RecyclerView to show user list -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewUsers"
         android:layout_width="match_parent"
@@ -13,7 +22,7 @@
         android:layout_weight="1"
         android:layout_marginTop="16dp" />
 
-
+    <!-- RecyclerView to show teacher absences -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTeacherAbsences"
         android:layout_width="match_parent"
@@ -22,14 +31,50 @@
         android:layout_marginTop="16dp"
         android:visibility="gone" />
 
+    <!-- Input fields for creating a user -->
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:padding="12dp"
+        android:layout_marginTop="16dp" />
 
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:padding="12dp"
+        android:layout_marginTop="8dp" />
+
+    <Spinner
+        android:id="@+id/spinnerRole"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:entries="@array/role_array" />
+
+    <!-- Button to create a user -->
+    <Button
+        android:id="@+id/buttonCreateUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create User"
+        android:textSize="16sp"
+        android:background="#003366"
+        android:textColor="#FFFFFF"
+        android:padding="12dp"
+        android:layout_marginTop="16dp" />
+
+    <!-- Button to manage timetable -->
     <Button
         android:id="@+id/buttonTimetable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Manage Timetable"
         android:textSize="16sp"
-        android:background="@drawable/button_background"
+        android:background="#003366"
         android:textColor="#FFFFFF"
         android:padding="12dp"
         android:layout_marginBottom="16dp" />

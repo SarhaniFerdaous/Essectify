@@ -6,4 +6,9 @@
     <string name="teacher_email">Teacher Email</string>
     <string name="teacher_name">Teacher Name</string>
     <string name="delete">Delete</string>
+    <string-array name="role_array">
+        <item>Admin</item>
+        <item>Agent</item>
+        <item>Teacher</item>
+    </string-array>
 </resources>

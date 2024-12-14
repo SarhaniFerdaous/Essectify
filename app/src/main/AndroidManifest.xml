@@ -44,6 +44,10 @@
             android:name=".views.TeacherPanelActivity"
             android:exported="false" />
 
+        <activity android:name=".views.TimetableActivity"></activity>
+
+
+
     </application>
 
 </manifest>

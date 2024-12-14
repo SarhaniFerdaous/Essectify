@@ -50,7 +50,7 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.UserViewHold
 
         holder.assignRoleButton.setOnClickListener(v -> showRoleAssignmentDialog(user.getUserId()));
 
-        // When a user is clicked, show absences for that teacher
+
         holder.itemView.setOnClickListener(v -> {
             if (context instanceof AdminPanelActivity) {
                 ((AdminPanelActivity) context).showTeacherAbsences(user.getEmail());

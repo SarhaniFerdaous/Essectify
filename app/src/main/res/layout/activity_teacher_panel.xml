@@ -7,7 +7,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:title="Teacher Panel"
         android:background="?android:attr/windowBackground"
         android:elevation="4dp"
@@ -61,7 +61,8 @@
             android:layout_height="wrap_content"
             android:text="Submit Reclamation"
             android:layout_gravity="end"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/pink" />
+            android:layout_marginTop="8dp">
+
+        </Button>
     </LinearLayout>
 </LinearLayout>

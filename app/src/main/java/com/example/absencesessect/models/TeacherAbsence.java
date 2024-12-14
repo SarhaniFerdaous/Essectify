@@ -30,7 +30,7 @@ public class TeacherAbsence {
         this.id = id;
     }
 
-    // Getters and Setters for other fields
+
     public String getTeacherName() {
         return teacherName;
     }

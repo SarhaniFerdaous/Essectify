@@ -30,7 +30,7 @@ public class RoleBasedRedirect extends AppCompatActivity {
         loadingIndicator = findViewById(R.id.loading_indicator); // Loading progress bar
 
         if (mAuth.getCurrentUser() == null) {
-            // Redirect to login if no user is logged in
+
             startActivity(new Intent(RoleBasedRedirect.this, LoginActivity.class));
             finish();
             return;
@@ -38,12 +38,12 @@ public class RoleBasedRedirect extends AppCompatActivity {
 
         String userId = mAuth.getCurrentUser().getUid();
 
-        // Show loading indicator
+
         loadingIndicator.setVisibility(View.VISIBLE);
 
         db.collection("users").document(userId).get()
                 .addOnCompleteListener(task -> {
-                    // Hide loading indicator when the task completes
+
                     loadingIndicator.setVisibility(View.GONE);
 
                     if (task.isSuccessful() && task.getResult() != null) {
@@ -58,7 +58,7 @@ public class RoleBasedRedirect extends AppCompatActivity {
                             return;
                         }
 
-                        // Redirect based on the user's role
+
                         switch (role) {
                             case "admin":
                                 startActivity(new Intent(RoleBasedRedirect.this, AdminPanelActivity.class));

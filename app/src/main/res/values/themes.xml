@@ -1,9 +1,48 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.AbsencesEssect" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    <!-- Light Theme -->
+    <style name="Theme.AbsencesEssect" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Primary Colors -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+
+        <!-- Secondary Colors -->
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+
+        <!-- Background and Surface -->
+        <item name="colorBackground">@color/colorBackground</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+
+        <!-- Error Colors -->
+        <item name="colorError">@color/colorError</item>
+        <item name="colorOnError">@color/colorOnError</item>
+
+        <!-- Typography -->
+        <item name="textAppearanceHeadline1">@style/TextAppearance.Headline1</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.Body1</item>
     </style>
 
-    <style name="Theme.AbsencesEssect" parent="Base.Theme.AbsencesEssect" />
+    <!-- Dark Theme (Optional) -->
+    <style name="Theme.AbsencesEssect.Dark" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="colorBackground">@color/colorOnSurface</item> <!-- Dark Grey/Blue -->
+        <item name="colorOnBackground">@color/colorSurface</item> <!-- White -->
+        <item name="colorSurface">@color/colorBackground</item>
+        <item name="colorOnSurface">@color/colorOnPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Headline1" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Body1" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textColor">@color/colorOnBackground</item>
+    </style>
+
 </resources>

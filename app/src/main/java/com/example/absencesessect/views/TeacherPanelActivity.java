@@ -35,18 +35,15 @@ public class TeacherPanelActivity extends AppCompatActivity {
 
     private static final String TAG = "TeacherPanelActivity";
 
-    // Firebase instances
     private FirebaseFirestore firestore;
     private FirebaseAuth auth;
 
-    // UI Elements
     private EditText reclamationParagraph;
     private Button submitReclamationButton;
     private RecyclerView recyclerViewOwnAbsences;
-    private ProgressBar loadingProgressBar; // ProgressBar for loading absences
-    private TextView loadingAbsencesText; // Optional: Text to indicate loading
+    private ProgressBar loadingProgressBar;
+    private TextView loadingAbsencesText;
 
-    // RecyclerView adapter and data
     private TeacherAbsenceAdapter absencesAdapter;
     private List<TeacherAbsence> absenceList = new ArrayList<>();
 
@@ -55,33 +52,31 @@ public class TeacherPanelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_panel);
 
-        // Set up the Toolbar as the Action Bar
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        // Enable the back arrow in the action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // Initialize Firebase
+
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
-        // Bind UI elements
+
         reclamationParagraph = findViewById(R.id.reclamationParagraph);
         submitReclamationButton = findViewById(R.id.submitReclamationButton);
         recyclerViewOwnAbsences = findViewById(R.id.recyclerViewOwnAbsences);
-        loadingProgressBar = findViewById(R.id.loadingProgressBar); // Bind ProgressBar
-        loadingAbsencesText = findViewById(R.id.loadingAbsencesText); // Bind TextView (optional)
+        loadingProgressBar = findViewById(R.id.loadingProgressBar);
+        loadingAbsencesText = findViewById(R.id.loadingAbsencesText);
 
-        // Set up RecyclerView
+
         recyclerViewOwnAbsences.setLayoutManager(new LinearLayoutManager(this));
         absencesAdapter = new TeacherAbsenceAdapter(this, absenceList);
         recyclerViewOwnAbsences.setAdapter(absencesAdapter);
 
-        // Set listeners
+
         submitReclamationButton.setOnClickListener(v -> submitReclamation());
 
-        // Load absences
+
         loadTeacherAbsences();
     }
 
@@ -99,15 +94,13 @@ public class TeacherPanelActivity extends AppCompatActivity {
             return;
         }
 
-        // Prepare data for Firestore
         Map<String, Object> reclamationData = new HashMap<>();
         reclamationData.put("reclamationText", reclamationText);
         reclamationData.put("userName", currentUser.getDisplayName());
         reclamationData.put("userEmail", currentUser.getEmail());
         reclamationData.put("userUID", currentUser.getUid());
-        reclamationData.put("string", System.currentTimeMillis());
+        reclamationData.put("timestamp", System.currentTimeMillis());
 
-        // Save to Firestore
         firestore.collection("reclamation")
                 .add(reclamationData)
                 .addOnSuccessListener(documentReference -> {
@@ -129,25 +122,28 @@ public class TeacherPanelActivity extends AppCompatActivity {
 
         String userEmail = currentUser.getEmail();
 
-        // Show progress bar and text while loading
+
         loadingProgressBar.setVisibility(View.VISIBLE);
         loadingAbsencesText.setVisibility(View.VISIBLE);
+
 
         firestore.collection("absences")
                 .whereEqualTo("teacherEmail", userEmail)
                 .orderBy("date", Query.Direction.DESCENDING)
                 .get()
                 .addOnCompleteListener(task -> {
-                    loadingProgressBar.setVisibility(View.GONE); // Hide progress bar
-                    loadingAbsencesText.setVisibility(View.GONE); // Hide loading text
+
+                    loadingProgressBar.setVisibility(View.GONE);
+                    loadingAbsencesText.setVisibility(View.GONE);
 
                     if (task.isSuccessful() && task.getResult() != null) {
-                        absenceList.clear(); // Clear existing data
+                        absenceList.clear();
 
                         if (task.getResult().isEmpty()) {
                             Toast.makeText(this, "No absences found.", Toast.LENGTH_SHORT).show();
                             return;
                         }
+
 
                         for (DocumentSnapshot document : task.getResult()) {
                             TeacherAbsence absence = document.toObject(TeacherAbsence.class);
@@ -167,19 +163,16 @@ public class TeacherPanelActivity extends AppCompatActivity {
                         }
                     }
                 });
-
-
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle the back arrow click
         if (item.getItemId() == android.R.id.home) {
-            // Redirect to LoginActivity
+
             Intent intent = new Intent(TeacherPanelActivity.this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            finish(); // Finish the current activity
+            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);

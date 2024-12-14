@@ -12,9 +12,11 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:title="Agent Panel"
-            android:background="?android:attr/windowBackground" />
+            android:background="?android:attr/windowBackground"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
         <!-- Page Header -->
         <TextView
