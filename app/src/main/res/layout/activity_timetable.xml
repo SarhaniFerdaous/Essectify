@@ -10,17 +10,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Header -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Manage Timetable"
+            android:text="Manage Timetables"
             android:textSize="24sp"
             android:textStyle="bold"
             android:fontFamily="sans-serif"
             android:layout_marginBottom="16dp"
             android:textColor="#707070" />
-
 
         <Button
             android:id="@+id/uploadExcelButton"
@@ -33,7 +32,6 @@
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
 
-
         <Button
             android:id="@+id/uploadPDFButton"
             android:layout_width="match_parent"
@@ -45,12 +43,12 @@
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
 
-        <!-- Section to display timetable data -->
+
         <TextView
             android:id="@+id/timetableHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Uploaded Timetable"
+            android:text="Uploaded Timetables"
             android:textSize="20sp"
             android:textStyle="bold"
             android:fontFamily="sans-serif"
@@ -58,14 +56,15 @@
             android:layout_marginBottom="8dp"
             android:textColor="#707070" />
 
+
         <TextView
-            android:id="@+id/timetableDataView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="No timetable uploaded yet."
-            android:textSize="16sp"
-            android:background="@drawable/timetable_data_background"
-            android:padding="12dp"
-            android:textColor="#FFFFFF" />
+            android:id="@+id/fileContentTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No timetable uploaded yet."
+        android:textSize="16sp"
+        android:background="@drawable/timetable_data_background"
+        android:padding="12dp"
+        android:textColor="#FFFFFF" />
     </LinearLayout>
 </ScrollView>
